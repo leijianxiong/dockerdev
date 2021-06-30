@@ -1,0 +1,56 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    ports:
+      - 3306:3306
+  redis:
+    container_name: redis
+    image: redis:5.0.12
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - 6379:6379
+
+  phpfpm:
+    depends_on:
+      - mysql
+      - redis
+    links:
+      - mysql
+      - redis
+    container_name: phpfpm
+    # 定制安装扩展使用
+    # build: ./phpfpm
+    # image: custom-phpfpm:v1
+    image: php:7.4-fpm #镜像默认监听9000端口
+    # ports:
+    #  - 9000:9000
+
+  nginx:
+    depends_on:
+      - phpfpm
+    links:
+      - phpfpm
+    container_name: nginx
+    image: nginx:stable
+    volumes:
+      - ./nginx/logs:/var/log/nginx # 日志目录
+
+      #- ./phpfpm/conf/php-fpm.sock:/var/run/php-fpm.sock #指定php-fpm sock文件
+      - projects:/var/www #将项目目录挂载到www
+
+      - ./nginx/conf/vhosts:/etc/nginx/conf.d #挂载项目配置目录
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf #指定nginx配置文件
+    ports:
+      - 9030:9030
+      #...
+
+volumes:
+  projects: /Users/jianxiong/maliujia/3whtml #指定项目目录

@@ -1,0 +1,5 @@
+/mysql/conf
+/mysql/data
+/redis/conf
+/redis/data
+/nginx/conf/vhosts/*.conf
