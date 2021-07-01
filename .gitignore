@@ -2,4 +2,5 @@
 /mysql/data
 /redis/conf
 /redis/data
+/nginx/logs
 /nginx/conf/vhosts/*.conf

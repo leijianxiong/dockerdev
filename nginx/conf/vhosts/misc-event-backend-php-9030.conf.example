@@ -9,13 +9,13 @@ server
         access_log  /var/log/nginx/misc-event-backend-php.access.log combined;
         error_log  /var/log/nginx/misc-event-backend-php.error.log warn;
 
-        include rewrite-yii2.conf;
+        include /mnt/nginx/conf/rewrite-yii2.conf;
         #error_page   404   /404.html;
 
         # Deny access to PHP files in specific directory
         #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ { deny all; }
 
-        include enable-php.conf;
+        include /mnt/nginx/conf/enable-php.conf;
 
         location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
         {
