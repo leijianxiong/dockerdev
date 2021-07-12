@@ -35,6 +35,7 @@ services:
     #  - 9000:9000
     volumes:
       - projects:/var/www #将项目目录挂载到www
+      - sshdirs:/root/.ssh #将主机ssh目录挂载到容器 for composer install
 
   nginx:
     depends_on:
@@ -64,3 +65,9 @@ volumes:
       type: none
       o: bind
       device: /Users/jianxiong/maliujia/3whtml #指定项目目录
+  sshdirs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/jianxiong/.ssh #指定项目目录
