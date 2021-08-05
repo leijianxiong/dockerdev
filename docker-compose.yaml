@@ -20,6 +20,9 @@ services:
       - 6379:6379
 
   phpfpm:
+    networks:
+      - default
+      - outside
     depends_on:
       - mysql
       - redis
@@ -71,3 +74,8 @@ volumes:
       type: none
       o: bind
       device: /Users/jianxiong/.ssh #指定项目目录
+
+networks:
+  # docker network create outside
+  outside:
+    external: true
