@@ -3,4 +3,4 @@
 /redis/conf
 /redis/data
 /nginx/logs
-/nginx/conf/vhosts/*.conf
+#/nginx/conf/vhosts/*.conf
