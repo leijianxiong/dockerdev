@@ -5,7 +5,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions @composer bcmath bz2 gd gettext intl mcrypt memcached mysqli pcntl pdo_mysql \
-      protobuf redis shmop soap sockets sysvmsg sysvsem sysvshm vips xmlrpc zip xdebug
+      protobuf redis shmop soap sockets sysvmsg sysvsem sysvshm vips xmlrpc zip
 
 # install git for feature command `compose install`
 RUN apt-get update && \
