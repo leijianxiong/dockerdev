@@ -30,7 +30,7 @@ services:
       - mysql
       - redis
     container_name: phpfpm
-    # 定制安装扩展使用
+    # 定制安装扩展使用 dcp up --build phpfpm
     build: ./phpfpm
     image: custom-phpfpm:v1
     # image: php:7.4-fpm #镜像默认监听9000端口
@@ -60,7 +60,17 @@ services:
       - 9017:9017
       - 9030:9030
       - 9101:9101 #wechat-domain-travel
-      #...
+      - 9031:9031
+      - 9032:9032
+      - 9033:9033
+      - 9034:9034
+      - 9035:9035
+      - 9036:9036
+      - 9037:9037
+      - 9038:9038
+      - 9039:9039
+      - 9040:9040
+      - 9041:9041
 
 volumes:
   projects:
