@@ -58,8 +58,8 @@ services:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf #指定nginx配置文件
     ports:
       - 9017:9017
+      - 9018:9018 #wechat-domain-travel
       - 9030:9030
-      - 9101:9101 #wechat-domain-travel
       - 9031:9031
       - 9032:9032
       - 9033:9033
@@ -72,6 +72,9 @@ services:
       - 9040:9040
       - 9041:9041
       - 9042:9042
+      - 9043:9043
+      - 9044:9044
+      - 9045:9045
 
 volumes:
   projects:
